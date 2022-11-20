@@ -414,7 +414,7 @@ def processWatchedShows(backup_filename: str, dry_run: bool):
                     episode.mark_as_seen(watched_at=tvShowEpisodeAired)
                     # Add the episode to the local database as imported, so it can be skipped,
                     # if the process is repeated
-                    syncedEpisodesTable.insert({"episodeId": True})
+                    syncedEpisodesTable.insert({"episodeId": tvShowEpisodeId})
                     # Clear the error streak on completing the method without errors
                     errorStreak = 0
                     break
