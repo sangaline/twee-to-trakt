@@ -163,7 +163,7 @@ def getShowByName(name, seasonNo, episodeNo, tvShowYear):
         if checkTitleNameMatch(name, show.title):
             # If the title included the year of broadcast, then we can be more picky in the results
             # to look for a show with a broadcast year that matches
-            if doesTitleIncludeYear:
+            if doesTitleIncludeYear or (year and year > -1):
                 # If the show title is a 1:1 match, with the same broadcast year, then bingo!
                 if (name == show.title) and (show.year == year):
                     # Clear previous results, and only use this one
@@ -479,7 +479,7 @@ def start(backup_filename: str):
 
         while True:
             try:
-                menuSelection = input("Enter your menu selection: ")
+                menuSelection = input("Enter your menu selection [1]: ")
                 menuSelection = 1 if not menuSelection else int(menuSelection)
                 break
             except ValueError:
