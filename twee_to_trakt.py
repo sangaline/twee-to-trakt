@@ -385,10 +385,12 @@ def processWatchedShows(backup_filename: str, dry_run: bool):
                     # If the method returned 'None', then this is an indication to skip the episode, and
                     # move onto the next one
                     if traktShowObj is None:
+                        logging.warning("No match was found for '{tvShowName}'!")
                         break
                     # Show the progress of the import on-screen
                     logging.info(
                         f"({rowsCount+1}/{rowsTotal}) - Processing '{tvShowName}' Season {tvShowSeasonNo} / Episode {tvShowEpisodeNo}"
+                        f" matched as {traktShowObj.title} ({traktShowObj.year})."
                     )
                     # Get the season from the Trakt API
                     season = next(
