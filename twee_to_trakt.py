@@ -34,6 +34,8 @@ class Expando(object):
 
 
 def isAuthenticated():
+    if not os.path.exists("pytrakt.json"):
+        return False
     with open("pytrakt.json") as f:
         data = json.load(f)
         daysBeforeExpiration = (
